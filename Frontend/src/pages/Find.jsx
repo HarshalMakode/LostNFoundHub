@@ -54,6 +54,9 @@ function Find() {
       <Navbar />
       <section>
         <h1 className="lfh1">Lost and Found Items</h1>
+        <div className="pink-gradient"></div>
+        <div className="blue-gradient"></div>
+        <div className="white-gradient"></div>
         <div className="item-container">
           <HashLoader
             color="#fdf004"

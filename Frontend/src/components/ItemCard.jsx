@@ -16,6 +16,9 @@ export default function Itemcard(props) {
   return (
     <a href={`/find/details/${props.id}`} data-aos="fade-up">
       <div className="card">
+      <div className="pink-gradient"></div>
+        <div className="blue-gradient"></div>
+        <div className="white-gradient"></div>
         <div className="card-img">
           <img src={image} alt="Uploaded File" onError={() => setImage(noImage)} />
         </div>

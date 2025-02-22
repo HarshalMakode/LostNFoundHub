@@ -66,6 +66,9 @@ export default function Post() {
       <Navbar />
       <section>
         <h1 className="lfh1">Post Found Item</h1>
+        <div className="pink-gradient"></div>
+        <div className="blue-gradient"></div>
+        <div className="white-gradient"></div>
         <div className="form-container">
           <h2 id="pfi1">Please fill all the required fields</h2>
           <form className="form" onSubmit={submitData}>

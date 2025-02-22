@@ -19,6 +19,9 @@ function Home(){
         {/* <ParticlesBackground /> */}
         </div>
         <div className="hero">
+        <div className="pink-gradient"></div>
+        <div className="blue-gradient"></div>
+        <div className="white-gradient"></div>
           <h1>Lost And Found</h1>
           <a href="/find">
             <button style={{ fontWeight: 600 }}>Find item</button>

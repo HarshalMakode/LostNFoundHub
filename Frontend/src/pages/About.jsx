@@ -19,6 +19,9 @@ function About(){
       <section id="about">
         
         <h1 className="lfh1">About Us</h1>
+        <div className="pink-gradient"></div>
+        <div className="blue-gradient"></div>
+        <div className="white-gradient"></div>
         <p className="about-desc">
           Welcome to our online community dedicated to helping you find lost
           items and reconnect with cherished possessions. At <span >Lost and Found</span>, we

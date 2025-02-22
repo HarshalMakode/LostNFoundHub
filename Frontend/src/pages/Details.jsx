@@ -39,6 +39,9 @@ function Details() {
     <main id="detailspage">
       <Navbar />
       <section>
+        <div className="pink-gradient"></div>
+        <div className="blue-gradient"></div>
+        <div className="white-gradient"></div>
         {loading ? (
           <HashLoader
             color="#fdf004"
