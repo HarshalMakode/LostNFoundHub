@@ -5,7 +5,6 @@ import Post from "./pages/Post";
 import Details from "./pages/Details";
 import "./App.css"
 import About from "./pages/About";
-import {gsap} from "gsap";
 
 function App() {
    return (

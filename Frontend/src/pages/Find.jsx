@@ -1,15 +1,13 @@
-import React,{useState,CSSProperties, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Itemcard from "../components/ItemCard";
 import Navbar from "../components/Navbar";
-import axios from "axios"
 import { api } from "../config";
 import HashLoader from "react-spinners/HashLoader";
-import AOS from "aos"
-import "aos/dist/aos.css"
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { gsap } from "gsap";
 
 function Find() {
-  
   useEffect(() => {
     gsap.from(".lfh1", {
       duration: 1,
@@ -19,31 +17,38 @@ function Find() {
     });
   }, []);
 
- const [item, setItem] = useState([]);
- const [loading, setLoading]=useState(true)
- useEffect(()=>{
-  AOS.init({duration:750})
- },[])
+  const [item, setItem] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    AOS.init({ duration: 750 });
+  }, []);
 
- const override= {
-   display: "block",
-   borderColor: "#fdf004",
-   position: "absolute",
-   top:"50%",
-   left:"50%",
-   transform:"translate(-50%,-50%)"
- };
- useEffect(()=>{
-   axios
-     .get(`${api}/item`)
-     .then((res) => {
-       setItem(res.data.data);
-       setLoading(false)
-     })
-     .catch((error) => {
-       console.log(error);
-     });
-     },[])
+  const override = {
+    display: "block",
+    borderColor: "#fdf004",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%,-50%)",
+  };
+
+  useEffect(() => {
+    fetch(`${api}/item`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setItem(data.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching items:", error);
+      });
+  }, []);
+
   return (
     <main id="findpage">
       <Navbar />
@@ -56,7 +61,7 @@ function Find() {
             cssOverride={override}
             size={50}
             aria-label="Loading Spinner"
-            data-testid="loader" 
+            data-testid="loader"
           />
           {item.reverse().map((findItem, index) => {
             return (

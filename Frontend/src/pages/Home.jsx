@@ -1,6 +1,4 @@
 import Navbar from "../components/Navbar"
-import About from "./About";
-import ParticlesBackground from "../components/Particle";
 import { gsap } from "gsap";
 import { useEffect } from "react";
 function Home(){

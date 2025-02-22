@@ -1,8 +1,7 @@
-import { useState, useEffect, CSSProperties } from "react";
+import { useState, useEffect} from "react";
 import Navbar from "../components/Navbar";
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { api } from "../config";
 import HashLoader from "react-spinners/HashLoader";
@@ -24,28 +23,17 @@ function Details() {
   };
 
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get(`${api}/item/${id}`)
-      .then((res) => {
-        setItem(res.data);
-        console.log(res.data);
+    fetch(`${api}/item/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setItem(data);
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Error fetching item:", error);
         setLoading(false);
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  axios.get(`${api}/files/${item.image}`).then((res) => {
-    console.log(res);
-    setImage(`${api}/files/${item.image}`)
-  }).catch((error) => {
-        console.log(error);
-      setImage(noimg);
-    });
+  }, [id]);
 
   return (
     <main id="detailspage">
@@ -61,43 +49,40 @@ function Details() {
             data-testid="loader"
           />
         ) : (
-          <div className="details-card">
-            <div className="img-container">
-              <img src={image} alt="" />
-            </div>
+          item && (
+            <div className="details-card">
+              <div className="img-container">
+                <img
+                  src={item.image ? `${api}/files/${item.image}` : noimg}
+                  alt="Item"
+                  onError={(e) => (e.target.src = noimg)}
+                />
+              </div>
 
-            <div className="action-container">
-              <a href={`tel:${item.phoneno}`}>
-                <CallIcon />Call
-              </a>
-              <a href={`mailto:${item.email}`}>
-                <EmailIcon /> Email
-              </a>
-          
+              <div className="action-container">
+                <a href={`tel:${item.phoneno}`}>
+                  <CallIcon /> Call
+                </a>
+                <a href={`mailto:${item.email}`}>
+                  <EmailIcon /> Email
+                </a>
+              </div>
 
-            </div>
-            <h1>{item.title}</h1>
-            <div className="details-container">
-              <p>Founder</p>
-              <p>{item.name}</p>
-              
-            </div>
+              <h1>{item.title}</h1>
+              <div className="details-container">
+                <p>Founder</p>
+                <p>{item.name}</p>
+              </div>
 
-            {/* <div className="details-container">
-            <p>Email</p>
-            <p>arjuncvinod@mail.com</p>
-          </div>
-          <div className="details-container">
-            <p>Phone</p>
-            <p>8494865475</p>
-          </div> */}
-            <div className="details-container desc">
-              {/* <p>Description</p> */}
-              <p>{item.description}</p>
-              
+              <div className="details-container desc">
+                <p>{item.description}</p>
+              </div>
+              <p>
+                T/C* If the item owner is not found within 2 months, the finder
+                can gain ownership.
+              </p>
             </div>
-            <p>T/C* If item owner not found within 2 months,then the fouder can gain the ownership</p>
-          </div>
+          )
         )}
       </section>
     </main>

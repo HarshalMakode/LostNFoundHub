@@ -1,28 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { api } from "../config";
-import { useEffect } from "react";
 import { gsap } from "gsap";
 
 export default function Post() {
-
   useEffect(() => {
-    gsap.from(".lfh1", {
-      duration: 1,
-      y: 100,
-      opacity: 0,
-      ease: "power2.out",
-    });
-
-    gsap.from("#pfi1", {
-      duration: 1,
-      y: 100,
-      opacity: 0,
-      ease: "power2.out",
-    });
+    gsap.from(".lfh1", { duration: 1, y: 100, opacity: 0, ease: "power2.out" });
+    gsap.from("#pfi1", { duration: 1, y: 100, opacity: 0, ease: "power2.out" });
     gsap.from(".input-container", {
       duration: 1,
       y: 100,
@@ -30,12 +16,7 @@ export default function Post() {
       ease: "power2.out",
       stagger: 0.2,
     });
-
-   
-
   }, []);
-
-
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -43,38 +24,43 @@ export default function Post() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState("");
-  const [btn,setBtn]=useState(true)
+  const [btn, setBtn] = useState(true);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
   const submitData = async (e) => {
-
     e.preventDefault();
-    setBtn(false)
-    const formData = new FormData();
+    setBtn(false);
 
+    const formData = new FormData();
     formData.append("name", name);
     formData.append("phoneno", phone);
     formData.append("email", email);
     formData.append("title", title);
     formData.append("description", desc);
-    formData.append("file", file);
+    if (file) {
+      formData.append("file", file);
+    }
 
-      await axios
-      .post(`${api}/item`, formData, {
-        headers: { "Content-Type": "multipart/form-data" }
-      })
-      .then(() => {
+    try {
+      const response = await fetch(`${api}/item`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
         enqueueSnackbar("Item Posted Successfully", { variant: "success" });
         navigate("/find");
-      })
-      .catch((err) => {
-        console.log(err);
-        enqueueSnackbar("Error", { variant: "error" });
-        setBtn(true);
-        
-      });
+      } else {
+        throw new Error("Failed to post item");
+      }
+    } catch (error) {
+      console.error(error);
+      enqueueSnackbar("Error", { variant: "error" });
+      setBtn(true);
+    }
   };
+
   return (
     <main id="postItem">
       <Navbar />
@@ -82,60 +68,34 @@ export default function Post() {
         <h1 className="lfh1">Post Found Item</h1>
         <div className="form-container">
           <h2 id="pfi1">Please fill all the required fields</h2>
-          <form className="form" encType="multipart/form-data">
+          <form className="form" onSubmit={submitData}>
             <div className="input-container">
-              <label htmlFor="">Name </label>{" "}
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
+              <label>Name</label>
+              <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
             </div>
             <div className="input-container">
-              <label htmlFor="">Email </label>{" "}
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+              <label>Email</label>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
             <div className="input-container">
-              <label htmlFor="">Phone </label>{" "}
-              <input
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
+              <label>Phone</label>
+              <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required />
             </div>
             <div className="input-container">
-              <label htmlFor="">Title </label>{" "}
-              <input
-                type="Text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
+              <label>Title</label>
+              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
             </div>
             <div className="input-container">
-              <label htmlFor="">Description </label>{" "}
-              <textarea onChange={(e) => setDesc(e.target.value)} value={desc}>
-                {desc}
-              </textarea>
+              <label>Description</label>
+              <textarea value={desc} onChange={(e) => setDesc(e.target.value)} required />
             </div>
             <div className="input-container">
-              <input
-                type="file"
-                accept="images/*"
-                onChange={(e) => setFile(e.target.files[0])}
-                name="file"
-              />
+              <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} />
             </div>
             <div className="input-container">
-            {btn?
-              (<button type="submit" className="submitbtn" onClick={submitData}>
-                Post
-              </button>) : (<button className="submitbtn">
-                Posting...
-              </button>)}
+              <button type="submit" className="submitbtn" disabled={!btn}>
+                {btn ? "Post" : "Posting..."}
+              </button>
             </div>
           </form>
         </div>
