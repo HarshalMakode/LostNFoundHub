@@ -10,7 +10,6 @@ import noimg from "../assets/no-image.png";
 function Details() {
   const [item, setItem] = useState("");
   const [loading, setLoading] = useState(false);
-  const [image, setImage] = useState("");
   const { id } = useParams();
 
   const override = {
@@ -23,6 +22,7 @@ function Details() {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetch(`${api}/item/${id}`)
       .then((response) => response.json())
       .then((data) => {

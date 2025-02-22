@@ -7,7 +7,6 @@ export default function Itemcard(props) {
   const [image, setImage] = useState(noImage);
 
   useEffect(() => {
-    console.log("Image prop received:", props.image);
     if (props.image) {
       setImage(`${api}/files/${encodeURIComponent(props.image)}`);
     }
