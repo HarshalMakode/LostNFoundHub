@@ -59,7 +59,7 @@ function Find() {
         <div className="white-gradient"></div>
         <div className="item-container">
           <HashLoader
-            color="#fdf004"
+            color="04b2fd"
             loading={loading}
             cssOverride={override}
             size={50}

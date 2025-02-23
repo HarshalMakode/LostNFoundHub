@@ -23,19 +23,14 @@ function About(){
         <div className="blue-gradient"></div>
         <div className="white-gradient"></div>
         <p className="about-desc">
-          Welcome to our online community dedicated to helping you find lost
-          items and reconnect with cherished possessions. At <span >Lost and Found</span>, we
-          understand the heartache and frustration that losing something
-          valuable can bring. Whether it's a beloved pet, a sentimental piece of
-          jewelry, or a vital piece of equipment, the distress of losing an item
-          can be overwhelming. Our mission is simple: to provide a platform
-          where people can share information about lost and found items in
-          public spaces, fostering a sense of community and support. We firmly
-          believe that by coming together, we can increase the chances of
-          reuniting lost items with their rightful owners.
+        At FindMyStuff, we know how distressing it can be to lose something valuable—whether it’s a cherished keepsake, an important document, or a beloved pet. That’s why we’ve created a dedicated platform to help you report, track, and recover lost items with ease.
+
+Our mission is simple: to connect people and lost belongings by providing a centralized, community-driven lost-and-found system. By working together, we can improve the chances of reuniting lost items with their rightful owners.
+
+Join our community today and help make lost-and-found stress-free and efficient!
         </p>
         <footer>
-            <p>Copyright &copy; 2023</p>
+            <p>Copyright &copy; 2025</p>
         </footer>
       </section>
       </>

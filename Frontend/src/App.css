@@ -1,5 +1,5 @@
 :root{
-    --yellow:#fdf004;
+    --yellow:#04b2fd;
 }
 html{
     scroll-behavior: smooth;
@@ -403,7 +403,7 @@ width: 500px;
     padding: 8px 20px;
     /* width: 100px;
     height: 35px; */
-    background-color: yellow;
+    background-color: #04b2fd;
     margin: 0 10px;
     color: black;
     display: flex;

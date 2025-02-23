@@ -44,7 +44,7 @@ function Details() {
         <div className="white-gradient"></div>
         {loading ? (
           <HashLoader
-            color="#fdf004"
+            color="04b2fd"
             loading={loading}
             cssOverride={override}
             size={50}
