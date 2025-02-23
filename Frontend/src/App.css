@@ -15,7 +15,7 @@ body{
     background-color: black;
 }
 
-.pink-gradient {
+/* .pink-gradient {
     position: absolute;
     z-index: 3;
     left: 25%;
@@ -25,7 +25,21 @@ body{
     border-radius: 50%;
     background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
     filter: blur(900px);
+} */
+
+.pink-gradient {
+    position: absolute;
+    z-index: 3;
+    left: 20%;
+    top: -10%;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff85ff 10%, #fc67fa 50%, #d633ff 90%);
+    filter: blur(500px) opacity(80%);
+    transition: all 0.5s ease-in-out;
 }
+/* 
 .white-gradient {
     position: absolute;
     z-index: 3;
@@ -36,8 +50,37 @@ body{
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.6);
     filter: blur(500px);
+} */
+
+.white-gradient {
+    position: absolute;
+    z-index: 3;
+    left: 20%;
+    bottom: -10%;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, rgba(230, 230, 230, 0.6) 50%, rgba(200, 200, 200, 0.4) 90%);
+    filter: blur(400px) opacity(80%);
+    transition: all 0.5s ease-in-out;
 }
+
+
 .blue-gradient {
+    position: absolute;
+    z-index: 3;
+    right: 20%;
+    top: -10%;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #6a8dff 10%, #214d76 50%, #0f3057 90%);
+    filter: blur(200px) opacity(80%);
+    transition: all 0.5s ease-in-out;
+}
+
+
+/* .blue-gradient {
     position: absolute;
     z-index: 3;
     right: 25%;
@@ -47,7 +90,7 @@ body{
     border-radius: 50%;
     background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #214d76 100%);
     filter: blur(123px);
-}
+} */
 /* --------------------------------------------------Nav Bar ------------------------------------ */
 nav{
     position: fixed;
