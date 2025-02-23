@@ -81,9 +81,10 @@ function Details() {
                 <p>{item.description}</p>
               </div>
               <p>
-                T/C* If the item owner is not found within 2 months, the finder
-                can gain ownership.
+                T/C* If the item owner is not found within 2 months, the item will be out for bidding.
               </p>
+              <p>Contact No of Center: 9876543234</p>
+              
             </div>
           )
         )}

@@ -23,12 +23,16 @@ function About(){
         <div className="blue-gradient"></div>
         <div className="white-gradient"></div>
         <p className="about-desc">
-        At FindMyStuff, we know how distressing it can be to lose something valuable—whether it’s a cherished keepsake, an important document, or a beloved pet. That’s why we’ve created a dedicated platform to help you report, track, and recover lost items with ease.
+        At <span>FindMyStuff</span>, we know how distressing it can be to lose something valuable—whether it’s a cherished keepsake, an important document, or a beloved pet. That’s why we’ve created a dedicated platform to help you report, track, and recover lost items with ease.
 
 Our mission is simple: to connect people and lost belongings by providing a centralized, community-driven lost-and-found system. By working together, we can improve the chances of reuniting lost items with their rightful owners.
 
 Join our community today and help make lost-and-found stress-free and efficient!
         </p>
+
+        <p className="about-desc">On <span>15 </span>date of every month,<span> Bidding</span> will be held in the center.</p>
+        <p className="about-desc">Headquater:Infront of haldiram,Sadar,Nagpur</p>
+        <p className="about-desc">Contact no: 9876543234</p>
         <footer>
             <p>Copyright &copy; 2025</p>
         </footer>
